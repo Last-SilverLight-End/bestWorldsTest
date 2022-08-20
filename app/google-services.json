@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "147363507671",
+    "project_id": "bestwordsproject-705f6",
+    "storage_bucket": "bestwordsproject-705f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147363507671:android:ddc90df9bb09bf7ca4ef92",
+        "android_client_info": {
+          "package_name": "com.example.bestwordstest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147363507671-b97705kpgrvnqk8nrs1dqo6tbibttmel.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_7EuPpKING-lLsNiDCGVhJvofiZjQUpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147363507671-b97705kpgrvnqk8nrs1dqo6tbibttmel.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
