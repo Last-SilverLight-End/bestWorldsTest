@@ -9,8 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.regex.Pattern.quote
 
-class QuotesPagerAdapter(val quotes: List<Quote>):
-    RecyclerView.Adapter<QuotesPagerAdapter.QuoteViewHolder>() {
+class QuotesPagerAdapter(
+    private val quotes: List<Quote>,
+    private val isNameRevealed: Boolean
+) : RecyclerView.Adapter<QuotesPagerAdapter.QuoteViewHolder>() {
 
 
 
@@ -21,7 +23,7 @@ class QuotesPagerAdapter(val quotes: List<Quote>):
         )
 
     override fun onBindViewHolder(holder: QuoteViewHolder, position: Int) {
-        holder.init(quotes[position])
+        holder.init(quotes[position],isNameRevealed)
     }
 
     override fun getItemCount() = quotes.size
@@ -31,9 +33,13 @@ class QuotesPagerAdapter(val quotes: List<Quote>):
         private val itemTextView: TextView = itemView.findViewById(R.id.quoteTextView)
         private val nameTextview: TextView = itemView.findViewById(R.id.nameTextView)
 
-        fun init(quote: Quote) {
+        fun init(quote: Quote, isNameRevealed: Boolean) {
             itemTextView.text = quote.quote
-            nameTextview.text = quote.name
+            if(isNameRevealed){
+
+            }
         }
     }
 }
+
+

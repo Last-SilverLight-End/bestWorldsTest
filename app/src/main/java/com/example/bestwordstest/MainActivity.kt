@@ -27,48 +27,48 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
 
     }
-    private fun initData(){
+
+    private fun initData() {
         val remoteDataConfig = Firebase.remoteConfig
         remoteDataConfig.setConfigSettingsAsync(
             remoteConfigSettings {
                 minimumFetchIntervalInSeconds = 0
-
             }
         )
         remoteDataConfig.fetchAndActivate().addOnCompleteListener {
-            if(it.isSuccessful){
-                val quotesBring = quotesBringJson(remoteDataConfig.getString("quotes"))
+
+            if (it.isSuccessful) {
+                val quotes = getBringQuotesJson(remoteDataConfig.getString("quotes"))
                 val isNameRevealed = remoteDataConfig.getBoolean("is_name_revealed")
-                displayQuotesPager(quotesBring,isNameRevealed)
-                viewPager.adapter = QuotesPagerAdapter(
-                    listOf(
-
-                    )
-
-                )
+                displayQuotesPager(quotes, isNameRevealed)
             }
         }
     }
-    private fun quotesBringJson(json: String) : List<Quote>{
+
+    private fun getBringQuotesJson(json: String): List<Quote> {
         val jsonArray = JSONArray(json)
-        var jsonList = emptyArray<JSONObject>()
-        for(index in 0 until jsonArray.length()){
+        var jsonList = emptyList<JSONObject>()
+        for (index in 0 until jsonArray.length()) {
             val jsonObject = jsonArray.getJSONObject(index)
-            jsonObject?.let{
-                jsonList  = jsonList+it
+            jsonObject?.let {
+                jsonList = jsonList + it
             }
         }
 
         return jsonList.map {
             Quote(
-                quote =it.getString("quote"),
-                name =it.getString("name"))
+                quote = it.getString("quote"),
+                name = it.getString("name")
+            )
         }
     }
 
-    private fun displayQuotesPager(quotes:List<Quote>,isNameRevealed : Boolean){
-        viewPager.adapter = QuotesPagerAdapter(
-            quotes
+    private fun displayQuotesPager(quotes: List<Quote>, isNameRevealed: Boolean) {
+        val adapter = QuotesPagerAdapter(
+            quotes = quotes,
+            isNameRevealed = isNameRevealed
         )
+        viewPager.adapter = adapter
+        viewPager.setCurrentItem(adapter.itemCount / 2, false)
     }
 }
